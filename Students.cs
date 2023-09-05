@@ -8,62 +8,6 @@ using System.Threading.Tasks;
 
 namespace OOP
 {
-    //public class Student
-    //{
-    //    public string Name { get; }
-    //    public int age;
-    //    private readonly string _city;
-    //    public string status;
-
-    //    public Student(string name, int age, string city)
-    //    {
-    //        Name = name;
-    //        Age = age;
-    //        _city = city;
-    //    }
-    //    public int Age
-    //    {
-    //        get { return age; }
-    //        set
-    //        {
-    //            age = value;
-    //            if (age < 18) status = "alapealine";
-    //            else status = "täiskasvanud";
-    //        }
-
-    //    }
-
-
-    //    public int Birth()
-    //    {
-    //        int currentData= DateTime.Now.Year;
-    //        return currentData;
-    //    }
-
-    //    public string Status
-    //    {
-    //        get { return status; }
-    //    }
-
-
-    //    public string GetCity()
-    //    {
-    //        return _city;
-    //    }
-
-    //    public void ShowInfo()
-    //    {
-
-    //        Console.WriteLine(Name);
-    //        Console.WriteLine(Age);
-    //        Console.WriteLine(GetCity());
-    //        Console.WriteLine(Status);
-    //        Console.WriteLine(Birth());
-
-
-    //    }
-    //}
-
 
     public class Message
     {
@@ -72,13 +16,15 @@ namespace OOP
         private readonly DateTime _time;
         private int _likes;
 
+        public Message() { }
+
         public Message(string content, string author, DateTime time)
         {
             this._content = content;
             this._author = author;
             this._time = time;
         }
-
+    
         public int Likes { get => _likes; }
         public DateTime Time { get => _time; }
         public string Author { get => _author; }
@@ -96,7 +42,7 @@ namespace OOP
             {
                 return _likes;
             }
-            return _likes / elapsed;
+            return (_likes / elapsed)*100000;
 
         }
 
@@ -132,15 +78,7 @@ namespace OOP
             }
             return result;
                                             
-            
-
-
-  
-            
-
         }
-
-
 
     }
 }
