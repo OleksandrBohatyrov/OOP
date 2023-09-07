@@ -8,78 +8,69 @@ using System.Threading.Tasks;
 
 namespace OOP
 {
-
-    public class Message
-    {
-        private readonly string _content;
-        private readonly string _author;
-        private readonly DateTime _time;
-        private int _likes;
-
-        public Message() { }
-
-        public Message(string content, string author, DateTime time)
+ 
+        public class Message
         {
-            this._content = content;
-            this._author = author;
-            this._time = time;
-        }
-    
-        public int Likes { get => _likes; }
-        public DateTime Time { get => _time; }
-        public string Author { get => _author; }
-        public string Content { get => _content; }
+            private readonly string _content;
+            private readonly string _author;
+            private readonly DateTime _time;
+            private int _likes;
 
-        public void AddLike()
-        {
-            _likes++;
-        }
-
-        public double GetPopularity()
-        {
-            double elapsed = DateTime.Now.Subtract(this._time).TotalSeconds;
-            if (elapsed == 0)
+            public Message(string content, string author, DateTime time)
             {
-                return _likes;
+                this._content = content;
+                this._author = author;
+                this._time = time;
             }
-            return (_likes / elapsed)*100000;
 
-        }
+            public int Likes { get => _likes; }
+            public DateTime Time { get => _time; }
+            public string Author { get => _author; }
+            public string Content { get => _content; }
 
-        public void Messages()
-        {
-            Console.WriteLine("Sisu:{0}\nAutor: {1}", Content, Author);
-        }
-
-
-        public string ShowPopularity(double esimene, double teine)
-        {
-
-            string  result = "";
-            if (esimene > teine) { result = "Esimene sõune on polaarsem kui teine"; };
-            if (esimene < teine) { result = "Teine sõune on polaarsem kui Esimene"; };
-            return result;
-
-        }
-
-        public string ShowPopularityN(List<Message> messages)
-        {
-
-            string result = "";
-            double popularity = 0;
-            for (int i = 0; 1 < messages.Count; i++)
+            public void AddLike()
             {
-                if (messages[i].GetPopularity()>popularity) 
+                _likes++;
+            }
+
+            public double GetPopularity()
+            {
+                double elapsed = DateTime.Now.Subtract(this._time).TotalSeconds;
+                if (elapsed == 0)
                 {
-                    popularity = messages[i].GetPopularity();
-                    result = messages[i].Content + " on kõige populaarse sõnum, seda kirjutas " + messages[i].Author;
-                    
+                    return _likes;
                 }
-            }
-            return result;
-                                            
-        }
+                return _likes / elapsed;
 
+            }
+            public void ShowMessageInfo()
+            {
+                Console.WriteLine("Sisu:{0}\nAutor:{1}", Content, Author);
+            }
+            public string GetPopularityInfo(double esimene, double teine)
+            {
+                string rezult = "";
+                if (esimene > teine) { rezult = "Esimene sõnum on polulaarsem kui teine"; };
+                if (esimene < teine) { rezult = "Teine sõnum on populaarsem kui esimene"; };
+                return rezult;
+            }
+            public string GetPopularityInfoN(List<Message> messages)
+            {
+                string rezult = "";
+                double popularity = 0;
+                for (int i = 0; i < messages.Count; i++)
+                {
+                    if (messages[i].GetPopularity() > popularity)
+                    {
+                        popularity = messages[i].GetPopularity();
+                        rezult = messages[i].Content + " on kõige populaarsem sõnum, seda kirjutas " + messages[i].Author;
+                    }
+
+                }
+                return rezult;
+            
+
+        }
     }
 }
 
